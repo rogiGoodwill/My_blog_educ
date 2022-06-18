@@ -10,13 +10,19 @@ def main_page(request):
 
 
 def posts(request):
-    #return HttpResponse('Все посты блога')
+    # return HttpResponse('Все посты блога')
     return render(request, 'blog/list_detail.html')
 
 
-def name_post(request, name_post):
-    return HttpResponse(f'Информация о посте {name_post}')
+def name_post(request, post_name):
+    data = {
+        'post_name': post_name,
+    }
+    return render(request, 'blog/detail_by_name.html', context=data)
 
 
-def number_post(request, number_post):
-    return HttpResponse(f'Здесь содержится информация о посте под номером {number_post}')
+def number_post(request, post_number):
+    data = {
+        'post_number': post_number,
+    }
+    return render(request, 'blog/detail_by_number.html', context=data)
